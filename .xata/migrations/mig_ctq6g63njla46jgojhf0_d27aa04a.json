@@ -1,0 +1,16 @@
+{
+  "id": "mig_ctq6g63njla46jgojhf0",
+  "parentID": "mig_ctq6g2bnjla46jgojhe0",
+  "checksum": "1:d27aa04a6e14ab51f6503e7b3606940f4b471c17b6825c3b29d39c3e3d7bb5bc",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "subAuth",
+          "type": "text"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

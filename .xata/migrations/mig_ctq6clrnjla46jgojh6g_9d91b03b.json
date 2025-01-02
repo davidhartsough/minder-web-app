@@ -1,0 +1,16 @@
+{
+  "id": "mig_ctq6clrnjla46jgojh6g",
+  "parentID": "mig_ctq68e3njla46jgojh5g",
+  "checksum": "1:9d91b03b5d64a5e91c5be05214190e047f586bfa0f91c199ec2cf652e3ab318b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "sequence",
+          "type": "multiple"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

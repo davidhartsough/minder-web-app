@@ -1,0 +1,16 @@
+{
+  "id": "mig_ctq6fs3njla46jgojhd0",
+  "parentID": "mig_ctq6dibnjla46jgojhc0",
+  "checksum": "1:a4741c04af7234d8101bfd08a4a18a05b5f5b696094948e96ac94f24ab1a1302",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "subEndpoint",
+          "type": "text"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mig_ctq6d7bnjla46jgojh7g",
+  "parentID": "mig_ctq6clrnjla46jgojh6g",
+  "checksum": "1:724d33047496c28e533fab6885445d9d0fe59fbb102151cf9956b1113a3d5d72",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "tz",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "America/Chicago"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+main {
+  max-width: 45rem;
+  padding: 1.5rem 1rem 3rem;
+  margin: auto;
+}
+h1 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0;
+}
+p {
+  margin: 0 0 0.25rem;
+}
+textarea {
+  flex: 1 1 100%;
+  display: block;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #bbb;
+  border-radius: 0.25rem;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  height: auto;
+  line-height: 1.15;
+  padding: 0.4rem 0.5rem 0.5rem;
+  min-height: 6rem;
+  transition: border-color 0.2s;
+}
+textarea::placeholder {
+  opacity: 0.8;
+}
+textarea:hover {
+  border-color: #ccc;
+}
+textarea:focus {
+  border-color: #aaa;
+}
+label {
+  display: block;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+}
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  margin-inline: 0;
+  padding-block: 0;
+  padding-inline: 0;
+}
+button {
+  display: block;
+  min-width: 7rem;
+  min-height: 2.25rem;
+  border-radius: 1.25rem;
+  color: #fff;
+  background-color: var(--theme);
+  padding: 0.375rem 0.75rem;
+  border: none;
+  text-transform: none;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  outline: none;
+  margin: 0.5rem auto;
+  font-weight: 500;
+  letter-spacing: 0.0125rem;
+  box-shadow: 0 0 0.25rem 0.25rem #00000010;
+  transition: all 0.2s;
+}
+button:hover,
+button:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 0.25rem 0.25rem #00000020;
+}
+ul {
+  margin: 0.5rem 0 1.5rem 1.5rem;
+  padding: 0;
+  list-style-position: outside;
+  list-style-image: none;
+}
+li {
+  margin-bottom: 0.125rem;
+  padding-left: 0;
+}

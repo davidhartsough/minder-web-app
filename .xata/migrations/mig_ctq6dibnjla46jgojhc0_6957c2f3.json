@@ -1,0 +1,16 @@
+{
+  "id": "mig_ctq6dibnjla46jgojhc0",
+  "parentID": "mig_ctq6d7bnjla46jgojh7g",
+  "checksum": "1:6957c2f378a2bd713396dec3eae56a08df9d7e618ec8b689c9317b3dd0d9ee8e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "pushTime",
+          "type": "datetime"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}
