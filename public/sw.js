@@ -16,7 +16,7 @@ self.addEventListener("push", function (event) {
   }
 });
 
-const url = "https://minder.netlify.app";
+const url = "https://re-minder.netlify.app";
 
 self.addEventListener("notificationclick", function (event) {
   event.notification.close();

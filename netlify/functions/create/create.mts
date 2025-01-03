@@ -1,11 +1,12 @@
-import { newResp, errResp, isString } from "../db/utils";
-import { createUser } from "../db/xdb";
+import { Context } from "@netlify/functions";
+import { newResp, errResp, isString } from "../../db/utils";
+import { createUser } from "../../db/xdb";
 
-export default async (req: Request) => {
-  if (req.method !== "POST") {
+export default async (request: Request, context: Context) => {
+  if (request.method !== "POST") {
     return errResp("Method not allowed", 405);
   }
-  const { uid, items, tz } = await req.json();
+  const { uid, items, tz } = await request.json();
   if (
     !uid ||
     !items ||

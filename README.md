@@ -2,21 +2,4 @@
 
 Reminders
 
-// windows
-// 1: 9am to 2pm
-// 2: 2pm to 8pm
-// minimum time gap: 2 hours
-
-```TypeScript
-export interface UserData {
-  id: string;
-  items: string[];
-  sequence: number[];
-  index: number;
-  timezone: string;
-  pushTime: string;
-  subEndpoint: string;
-  subP256dh: string;
-  subAuth: string;
-}
-```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2a3b52a6-7163-4a63-8192-3a9b2fd82af2/deploy-status)](https://app.netlify.com/sites/re-minder/deploys)

@@ -1,5 +1,5 @@
-import { newResp, errResp, isString } from "../db/utils";
-import { updateUser } from "../db/xdb";
+import { newResp, errResp, isString } from "../../db/utils";
+import { updateUser } from "../../db/xdb";
 
 export default async (req: Request) => {
   if (req.method !== "POST") {

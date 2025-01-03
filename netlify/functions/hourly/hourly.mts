@@ -1,6 +1,6 @@
 import { sendNotification, setVapidDetails } from "web-push";
 import type { Config } from "@netlify/functions";
-import { getUsersToNotify, setNext } from "../db/xdb";
+import { getUsersToNotify, setNext } from "../../db/xdb";
 
 setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL}`,

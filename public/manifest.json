@@ -1,6 +1,6 @@
 {
-  "short_name": "Reconnect",
-  "name": "Reconnection Reminder",
+  "short_name": "minder",
+  "name": "minder",
   "icons": [
     {
       "src": "/icon.png",
