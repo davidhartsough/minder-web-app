@@ -33,6 +33,7 @@ export default function ItemsForm({
           defaultValue={items.join("\n")}
           required
           autoFocus
+          disabled={saving}
         ></textarea>
         <button type="submit" disabled={saving}>
           {saving ? "Saving" : "Save"}

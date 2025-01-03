@@ -1,4 +1,4 @@
-const api = "https://minder.netlify.app/.netlify/functions";
+const api = import.meta.env.API_URL;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function post(path: string, body: any) {

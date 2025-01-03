@@ -11,7 +11,7 @@ function urlBase64ToUint8Array(base64String: string) {
   return outputArray;
 }
 export function getAppServerKey() {
-  const vapidPublicKey = process.env.VAPID_PUBLIC_KEY;
+  const vapidPublicKey = import.meta.env.VAPID_PUBLIC_KEY;
   if (!vapidPublicKey) {
     throw new Error("VAPID_PUBLIC_KEY is not set");
   }

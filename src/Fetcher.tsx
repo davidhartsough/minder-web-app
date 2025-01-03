@@ -13,7 +13,7 @@ export default function Fetcher({ children }: { children: React.ReactNode }) {
       });
     }
   }, [loading]);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="spinner" />;
   if (!items) return <Begin save={setItems} />;
   return children;
 }

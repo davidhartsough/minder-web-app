@@ -35,7 +35,7 @@ export default function Sub({ children }: { children: React.ReactNode }) {
       console.error("Failed to subscribe the user:", error);
     }
   };
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="spinner" />;
   if (!isSubscribed) {
     return <button onClick={subscribe}>Get Notifications</button>;
   }

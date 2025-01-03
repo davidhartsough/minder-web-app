@@ -9,14 +9,22 @@ function lsSetItems(items: string[]): void {
   localStorage.setItem("items", JSON.stringify(items));
 }
 
+type UserPartial = {
+  items: string[];
+  tz: string;
+};
 export async function dbGetItems(): Promise<string[] | null> {
   const uid = localStorage.getItem("uid");
   if (!uid) return null;
   const lsItems = lsGetItems();
   if (lsItems) return lsItems;
-  const items = (await get(`read?uid=${uid}`)) as string[] | null;
-  if (items) lsSetItems(items);
-  return items;
+  const data = (await get(`read?uid=${uid}`)) as UserPartial | null;
+  if (data) {
+    const { items } = data;
+    lsSetItems(items);
+    return items;
+  }
+  return null;
 }
 export async function dbSetItems(items: string[]) {
   const uid = localStorage.getItem("uid");
@@ -27,7 +35,7 @@ export async function dbSetItems(items: string[]) {
 
 export async function dbCreateUser(items: string[]) {
   const uid = localStorage.getItem("uid");
-  if (!uid) return;
+  if (!uid) throw new Error("No uid");
   lsSetItems(items);
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   localStorage.setItem("tz", tz);

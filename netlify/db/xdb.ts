@@ -7,7 +7,11 @@ const db = xata.db.users;
 
 export async function getUserRecord(uid: string) {
   const user = await db.read(uid, ["items", "tz"]);
-  return user;
+  if (!user) return null;
+  return {
+    items: user.items,
+    tz: user.tz,
+  };
 }
 export async function createUser(uid: string, items: string[], tz: string) {
   await db.create(uid, { items, tz });

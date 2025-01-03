@@ -11,25 +11,25 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
     setUID(saveUID(bday));
   };
   return (
-    <section>
+    <section id="login">
       <h3>Welcome!</h3>
       <p>
         To get started, just enter your birthday.
         <br />
         Your birthday is used to help you recover your info{" "}
-        <strong>on this device</strong> if you ever happen to clear your browser
-        data for this site.
+        <strong>on this device</strong>, if you ever happen to clear your
+        browser data for this site.
         <br />
         It's like a PIN that you'll never forget.
         <br />
-        (And this sure beats having to log in with an email/username and
-        password!)
+        (And this sure beats having to log in with an email and password!)
         <br />
-        You may enter a date that isn't your actual birthday, but just make sure
-        you remember it. (Any date is fine, since this is just a PIN for this
-        device.)
+        <strong>NOTE:</strong> You may enter any date that isn't your actual
+        birthday — just make sure that you remember it.
+        <br />
+        (Any date is fine, since this is just a PIN for this device.)
       </p>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} id="login-form">
         <fieldset disabled={loading}>
           <label htmlFor="birthday">Your Birthday:</label>
           <input
@@ -41,9 +41,10 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
             autoFocus
             defaultValue="1990-01-01"
             placeholder="YYYY-MM-DD"
+            disabled={loading}
           />
           <button type="submit" disabled={loading}>
-            {loading ? "Submitting" : "Submit"}
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </fieldset>
       </form>
