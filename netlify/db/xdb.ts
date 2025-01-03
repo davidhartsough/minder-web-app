@@ -1,20 +1,24 @@
+import { shuffle } from "./utils";
+import { calcNewPushTime } from "./dt";
 import { getXataClient } from "./xata";
 
 const xata = getXataClient();
+const db = xata.db.users;
 
 export async function getUserRecord(uid: string) {
-  const user = await xata.db.users.read(uid, ["items", "tz"]);
+  const user = await db.read(uid, ["items", "tz"]);
   return user;
 }
 export async function createUser(uid: string, items: string[], tz: string) {
-  await xata.db.users.create(uid, { items, tz });
+  await db.create(uid, { items, tz });
 }
 
-// async function setSequence(uid: string) {
-//   // TODO: !
-// }
 export async function updateUser(uid: string, items: string[]) {
-  await xata.db.users.update(uid, { items });
+  await db.update(uid, {
+    items,
+    index: 0,
+    sequence: shuffle(items),
+  });
 }
 type SubscriptionData = {
   subEndpoint: string;
@@ -25,10 +29,17 @@ export async function subUser(
   uid: string,
   { subEndpoint, subP256dh, subAuth }: SubscriptionData
 ) {
-  await xata.db.users.update(uid, {
+  const user = await getUserRecord(uid);
+  if (!user) throw new Error("User not found");
+  const { items, tz } = user;
+  if (!items) throw new Error("User has no items");
+  await db.update(uid, {
     subEndpoint,
     subP256dh,
     subAuth,
+    index: 0,
+    sequence: shuffle(items),
+    pushTime: calcNewPushTime(tz),
   });
 }
 
@@ -44,9 +55,7 @@ interface UserRecord {
 }
 
 export async function getUsersToNotify() {
-  const users = await xata.db.users
-    .filter({ pushTime: { $le: new Date() } })
-    .getMany();
+  const users = await db.filter({ pushTime: { $le: new Date() } }).getMany();
   return users
     .filter(
       (u) => u.subEndpoint && u.subAuth && u.subP256dh && u.items && u.sequence
@@ -72,4 +81,26 @@ export async function getUsersToNotify() {
         tz,
       })
     ) as UserRecord[];
+}
+
+type UserUpdates = {
+  index: number;
+  pushTime: Date;
+  sequence?: string[];
+};
+export async function setNext(
+  uid: string,
+  index: number,
+  items: string[],
+  tz: string
+) {
+  const nextIndex = (index + 1) % items.length;
+  const updates: UserUpdates = {
+    index: nextIndex,
+    pushTime: calcNewPushTime(tz),
+  };
+  if (nextIndex === 0) {
+    updates.sequence = shuffle(items);
+  }
+  await db.update(uid, updates);
 }

@@ -1,6 +1,6 @@
 import { sendNotification, setVapidDetails } from "web-push";
 import type { Config } from "@netlify/functions";
-import { getUsersToNotify } from "../db/xdb";
+import { getUsersToNotify, setNext } from "../db/xdb";
 
 setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL}`,
@@ -10,24 +10,33 @@ setVapidDetails(
 
 export default async () => {
   const usersToNotify = await getUsersToNotify();
-  for (const user of usersToNotify) {
+  for (const {
+    id,
+    subEndpoint,
+    subAuth,
+    subP256dh,
+    index,
+    items,
+    sequence,
+    tz,
+  } of usersToNotify) {
     try {
       const sub = {
-        endpoint: user.subEndpoint,
+        endpoint: subEndpoint,
         keys: {
-          auth: user.subAuth,
-          p256dh: user.subP256dh,
+          auth: subAuth,
+          p256dh: subP256dh,
         },
       };
-      const reminder = user.sequence[user.index];
+      const reminder = sequence[index];
       await sendNotification(sub, reminder);
-      // TODO: update user record!
+      await setNext(id, index, items, tz);
     } catch (e) {
       console.error(e);
     }
   }
 };
 
-export const config: Config = {
-  schedule: "@hourly",
-};
+// export const config: Config = {
+//   schedule: "@hourly",
+// };
