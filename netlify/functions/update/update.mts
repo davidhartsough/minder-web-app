@@ -6,6 +6,8 @@ export default async (req: Request) => {
     return errResp("Method not allowed", 405);
   }
   const { uid, items } = await req.json();
+  console.log("uid:", uid);
+  console.log("items:", items);
   if (
     !uid ||
     !items ||
