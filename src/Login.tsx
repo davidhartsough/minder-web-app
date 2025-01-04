@@ -10,6 +10,7 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
     const bday = formData.get("birthday") as string;
     setUID(saveUID(bday));
   };
+  if (loading) return <div className="spinner" />;
   return (
     <section>
       <h3>Welcome!</h3>

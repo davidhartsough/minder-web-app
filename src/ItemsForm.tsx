@@ -18,6 +18,7 @@ export default function ItemsForm({
       .map((i) => i.trim());
     onSave(newItems).then(() => setSaving(false));
   };
+  if (saving) return <div className="spinner" />;
   return (
     <form onSubmit={save}>
       <fieldset disabled={saving}>
