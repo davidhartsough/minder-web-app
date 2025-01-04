@@ -1,4 +1,4 @@
-const api = import.meta.env.API_URL;
+const api = "/.netlify/functions";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function post(path: string, body: any) {

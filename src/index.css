@@ -138,6 +138,8 @@ li {
 }
 
 .spinner {
+  width: 3rem;
+  height: 3rem;
   margin: 1rem auto;
   border: 0.25rem solid var(--theme);
   border-top-color: #bbb;
