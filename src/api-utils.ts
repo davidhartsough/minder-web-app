@@ -17,9 +17,14 @@ export async function post(path: string, body: any) {
 
 export async function get(path: string) {
   console.log(`${api}/${path}`);
-  const resp = await fetch(`${api}/${path}`);
-  console.log("resp.status:", resp.status);
-  const data = await resp.json();
-  console.log("data:", data);
-  return data;
+  try {
+    const resp = await fetch(`${api}/${path}`);
+    console.log("resp.status:", resp.status);
+    const data = await resp.json();
+    console.log("data:", data);
+    return data;
+  } catch (e) {
+    console.warn(e);
+    return null;
+  }
 }

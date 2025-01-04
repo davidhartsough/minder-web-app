@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { post } from "./api-utils";
-import { getAppServerKey } from "./utils";
+import { getASK } from "./utils";
 
 export default function Sub({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ export default function Sub({ children }: { children: React.ReactNode }) {
     try {
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: getAppServerKey(),
+        applicationServerKey: getASK(),
       });
       // Send subscription to the server
       const uid = localStorage.getItem("uid");

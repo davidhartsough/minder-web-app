@@ -10,13 +10,10 @@ function urlBase64ToUint8Array(base64String: string) {
   }
   return outputArray;
 }
-export function getAppServerKey() {
-  const vapidPublicKey =
-    import.meta.env.VAPID_PUBLIC_KEY || process.env.VAPID_PUBLIC_KEY;
-  if (!vapidPublicKey) {
-    throw new Error("VAPID_PUBLIC_KEY is not set");
-  }
-  return urlBase64ToUint8Array(vapidPublicKey);
+export function getASK() {
+  const vpk =
+    "BN9pUJMkbDVxcF2k79fhXWhqdj_p0iH8FA100FoxffFUYj1AT65odEXD3hNyPQeGIl0ZRgKQusbWDKEiMZsIbsI";
+  return urlBase64ToUint8Array(vpk);
 }
 
 export function shuffle(items: string[]): string[] {
