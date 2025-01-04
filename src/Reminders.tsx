@@ -5,11 +5,13 @@ import ItemsForm from "./ItemsForm";
 export default function Reminders() {
   const [editing, setEditing] = useState(false);
   const showForm = () => setEditing(true);
+  const items = lsGetItems()!;
   const save = async (newItems: string[]) => {
-    await dbSetItems(newItems);
+    if (items.join("\n") !== newItems.join("\n")) {
+      await dbSetItems(newItems);
+    }
     setEditing(false);
   };
-  const items = lsGetItems()!;
   return (
     <section>
       <h3>Reminders</h3>

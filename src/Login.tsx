@@ -11,7 +11,7 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
     setUID(saveUID(bday));
   };
   return (
-    <section id="login">
+    <section>
       <h3>Welcome!</h3>
       <p>
         To get started, just enter your birthday.
@@ -29,7 +29,7 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
         <br />
         (Any date is fine, since this is just a PIN for this device.)
       </p>
-      <form onSubmit={onSubmit} id="login-form">
+      <form onSubmit={onSubmit} id="login">
         <fieldset disabled={loading}>
           <label htmlFor="birthday">Your Birthday:</label>
           <input
