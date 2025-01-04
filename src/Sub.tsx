@@ -30,6 +30,7 @@ export default function Sub({ children }: { children: React.ReactNode }) {
       const uid = localStorage.getItem("uid");
       await post("subscribe", { uid, subscription: subscription.toJSON() });
       setIsSubscribed(true);
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       console.error("Failed to subscribe the user:", error);
