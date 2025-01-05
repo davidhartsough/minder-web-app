@@ -1,8 +1,8 @@
-import { sendNotification, setVapidDetails } from "web-push";
+import webpush from "web-push";
 import type { Config } from "@netlify/functions";
 import { getUsersToNotify, setNext } from "../../db/xdb";
 
-setVapidDetails(
+webpush.setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL}`,
   process.env.VAPID_PUBLIC_KEY || "",
   process.env.VAPID_PRIVATE_KEY || ""
@@ -29,7 +29,7 @@ export default async () => {
         },
       };
       const reminder = sequence[index];
-      await sendNotification(sub, reminder);
+      await webpush.sendNotification(sub, reminder);
       await setNext(id, index, items, tz);
     } catch (e) {
       console.error(e);
