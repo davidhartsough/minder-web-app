@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 
 export default function ItemsForm({
   onSave,
@@ -8,7 +8,7 @@ export default function ItemsForm({
   items: string[];
 }) {
   const [saving, setSaving] = useState(false);
-  const save = (e: React.FormEvent<HTMLFormElement>) => {
+  const save = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSaving(true);
     const formData = new FormData(e.currentTarget);

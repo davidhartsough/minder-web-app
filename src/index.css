@@ -1,28 +1,65 @@
+:root {
+  --font-family: ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont",
+    "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif;
+  --bg: #f8f9fa;
+  --fg: #101214;
+  --theme: #1471eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101214;
+    --fg: #f8f9fa;
+  }
+  input {
+    color-scheme: dark;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+:root,
+html,
+body,
+input,
+textarea,
+button {
+  color: var(--fg);
+  background: var(--bg);
+  font-family: var(--font-family);
+  line-height: 1.5;
+}
 main {
   max-width: 30rem;
   margin: auto;
   padding: 1.25rem 1rem 3rem;
 }
+main:has(> #intro) {
+  max-width: 35rem;
+}
+main:has(> #auth) {
+  max-width: 32rem;
+}
 header {
   background-color: #26292c;
-  background: linear-gradient(transparent 45%, #0006),
-    radial-gradient(circle 8rem at center, #363d45ee, #212426ee);
-  padding: 1.75rem 0;
+  background: radial-gradient(5.5rem 45%, hsl(210deg 12% 24% / 36%), #101214);
+  padding: 2.5rem 0;
   opacity: 0.9;
 }
 h1 {
-  color: #f2f2f2;
+  color: hsl(210deg 2% 98%);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin: 0;
   text-align: center;
   line-height: 1;
+  letter-spacing: 0.025rem;
+  text-shadow: 0 0 1.75rem hsl(210deg 8% 98% / 64%);
 }
 h2 {
   font-weight: 500;
   font-size: 2rem;
   margin: 0 0 0.75rem;
-  line-height: 1;
+  line-height: 1.25;
 }
 h3 {
   font-weight: 300;
@@ -129,6 +166,27 @@ ul {
 li {
   margin-bottom: 0.125rem;
   padding-left: 0;
+}
+#intro {
+  line-height: 1.25;
+  margin-bottom: 2rem;
+}
+#intro p,
+#intro ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#intro h2 {
+  font-size: clamp(1.25rem, 6.5vw, 2rem);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#intro h2 span {
+  font-weight: 400;
+}
+#intro h3,
+#intro button {
+  margin-top: 2rem;
 }
 #login {
   max-width: 14rem;

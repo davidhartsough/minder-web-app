@@ -1,16 +1,19 @@
+import Intro from "./Intro";
 import Auth from "./Auth";
 import Fetcher from "./Fetcher";
-import Reminders from "./Reminders";
 import Sub from "./Sub";
+import Reminders from "./Reminders";
 
 export default function App() {
   return (
-    <Auth>
-      <Fetcher>
-        <Sub>
-          <Reminders />
-        </Sub>
-      </Fetcher>
-    </Auth>
+    <Intro>
+      <Auth>
+        <Fetcher>
+          <Sub>
+            <Reminders />
+          </Sub>
+        </Fetcher>
+      </Auth>
+    </Intro>
   );
 }

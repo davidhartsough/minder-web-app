@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { saveUID } from "./auth-utils";
 
 export default function Login({ setUID }: { setUID: (uid: string) => void }) {
   const [loading, setLoading] = useState(false);
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     const formData = new FormData(e.currentTarget);
@@ -12,8 +12,11 @@ export default function Login({ setUID }: { setUID: (uid: string) => void }) {
   };
   if (loading) return <div className="spinner" />;
   return (
-    <section>
+    <section id="auth">
       <h3>Welcome!</h3>
+      <p>
+        <strong>Login</strong>
+      </p>
       <p>
         To get started, just enter your birthday.
         <br />

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { dbGetItems } from "./db";
 import Begin from "./Begin";
 
-export default function Fetcher({ children }: { children: React.ReactNode }) {
+export default function Fetcher({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState<string[] | null>(null);
   useEffect(() => {

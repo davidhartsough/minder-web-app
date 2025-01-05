@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { post } from "./api-utils";
 import { getASK } from "./utils";
 
-export default function Sub({ children }: { children: React.ReactNode }) {
+export default function Sub({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [registration, setRegistration] =
