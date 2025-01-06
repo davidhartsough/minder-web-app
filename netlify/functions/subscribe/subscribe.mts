@@ -7,8 +7,6 @@ export default async (request: Request, context: Context) => {
     return errResp("Method not allowed", 405);
   }
   const { uid, subscription } = await request.json();
-  console.log("uid:", uid);
-  console.log("subscription:", subscription);
   if (
     !uid ||
     !subscription ||

@@ -33,7 +33,7 @@ export default function Sub({ children }: { children: ReactNode }) {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.error("Failed to subscribe the user:", error);
+      console.warn("Failed to subscribe the user:", error);
     }
   };
   if (loading) return <div className="spinner" />;

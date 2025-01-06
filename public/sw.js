@@ -1,7 +1,6 @@
 self.addEventListener("push", function (event) {
   if (event.data) {
-    // TODO event.data
-    const { body } = event.data.json();
+    const body = event.data.text();
     const options = {
       body,
       icon: "/icon.png",
@@ -16,7 +15,7 @@ self.addEventListener("push", function (event) {
   }
 });
 
-const url = "https://re-minder.netlify.app";
+const url = "https://re-minder.netlify.app/";
 
 self.addEventListener("notificationclick", function (event) {
   event.notification.close();
