@@ -59,12 +59,7 @@ interface UserRecord {
 }
 
 export async function getUsersToNotify() {
-  console.log(new Date());
   const users = await db.filter({ pushTime: { $le: new Date() } }).getMany();
-  console.log(
-    "users to notify:",
-    users.map(({ id, pushTime }) => ({ id, pushTime }))
-  );
   return users
     .filter(
       (u) => u.subEndpoint && u.subAuth && u.subP256dh && u.items && u.sequence
@@ -108,10 +103,8 @@ export async function setNext(
     index: nextIndex,
     pushTime: calcNewPushTime(tz),
   };
-  console.log("updates:", updates);
   if (nextIndex === 0) {
     updates.sequence = shuffle(items);
   }
   await db.update(uid, updates);
-  console.log("update successful");
 }

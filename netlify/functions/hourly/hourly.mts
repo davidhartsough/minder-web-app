@@ -9,9 +9,9 @@ webpush.setVapidDetails(
 );
 
 export default async () => {
-  console.log("HOURLY. Let's go!");
   const usersToNotify = await getUsersToNotify();
-  console.log("usersToNotify.length:", usersToNotify.length);
+  console.log(new Date());
+  console.log("total:", usersToNotify.length);
   for (const {
     id,
     subEndpoint,
@@ -30,10 +30,10 @@ export default async () => {
       },
     };
     const reminder = sequence[index];
-    console.log("TRY:", id.slice(0, 40), reminder);
+    console.log("TRY:", id.slice(0, 30), reminder);
     try {
       await webpush.sendNotification(sub, reminder);
-      console.log("SENT:", id.slice(0, 40), reminder);
+      console.log("SENT:", id.slice(0, 30), reminder);
       await setNext(id, index, items, tz);
     } catch (e) {
       console.error(e);
